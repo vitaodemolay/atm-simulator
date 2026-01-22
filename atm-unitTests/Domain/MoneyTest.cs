@@ -53,5 +53,37 @@ namespace atm_unitTests.Domain
             var money = new Money(123.456);
             Assert.Equal("R$ 123,46", money.ToString());
         }
+
+        [Fact]
+        public void Should_compare_two_money_instances()
+        {
+            var money1 = new Money(100.0);
+            var money2 = new Money(100.0);
+            var money3 = new Money(50.0);
+
+            Assert.True(money1 == money2);
+            Assert.True(money1.Equals(money2));
+            Assert.False(money1 != money2);
+            Assert.True(money1 != money3);
+            Assert.False(money1 == money3);
+        }
+
+        [Fact]
+        public void Should_compare_money_with_double()
+        {
+            var money = new Money(100.0);
+
+            Assert.True(money == 100.0);
+            Assert.True(100.0 == money);
+            Assert.False(money != 100.0);
+            Assert.False(100.0 != money);
+        }
+
+        [Fact]
+        public void Should_return_zero_money()
+        {
+            var zeroMoney = Money.Zero;
+            Assert.Equal(0.0, zeroMoney.Amount);
+        }
     }
 }
