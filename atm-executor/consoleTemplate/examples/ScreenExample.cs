@@ -1,8 +1,7 @@
-using atm_executor.consoleTemplate;
 using atm_executor.consoleTemplate.screens;
 using atm_executor.domain;
 
-namespace atm_executor
+namespace atm_executor.consoleTemplate.examples
 {
     /// <summary>
     /// Exemplo de como usar o ScreenNavigator e as telas de console
