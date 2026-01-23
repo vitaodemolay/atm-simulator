@@ -24,5 +24,7 @@ namespace atm_executor.domain
 
             _quantity -= quantity;
         }
+
+        public override string ToString() => $"Slot {Value} - Quantity: {_quantity} - Total: {TotalAmount()}";
     }
 }

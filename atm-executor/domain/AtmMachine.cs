@@ -33,6 +33,7 @@ namespace atm_executor.domain
 
         public IEnumerable<double> GetSupportedDenominations() => supportedDenominations;
         public IEnumerable<IMoneySlotView> GetMoneySlots() => moneySlots.Values;
+        public bool CanWithdraw() => GetTotalCashAvailable() > Money.Zero;
 
         public void LoadCash(Money slotValue, int quantity)
         {

@@ -78,7 +78,7 @@ namespace atm_executor.consoleTemplate.screens
             RenderEmptyLine();
 
             int slotNumber = 1;
-            foreach (var slot in slots)
+            foreach (IMoneySlotView slot in slots)
             {
                 Console.WriteLine($"{slotNumber} - {slot}");
                 slotNumber++;

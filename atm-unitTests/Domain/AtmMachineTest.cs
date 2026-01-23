@@ -161,5 +161,21 @@ namespace atm_unitTests.Domain
                 Assert.Equal(expectedQtdInSlots, slot.Quantity);
             }
         }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void Should_check_if_can_withdraw(bool expectedCanWithdraw)
+        {
+            var atm = new AtmMachine();
+            if (expectedCanWithdraw)
+            {
+                atm.LoadCash(100.0, 1);
+            }
+
+            var canWithdraw = atm.CanWithdraw();
+
+            Assert.Equal(expectedCanWithdraw, canWithdraw);
+        }
     }
 }

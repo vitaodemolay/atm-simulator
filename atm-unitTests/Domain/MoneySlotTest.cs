@@ -63,5 +63,15 @@ namespace atm_unitTests.Domain
             Assert.True(moneySlot.CanDispense(3));
             Assert.False(moneySlot.CanDispense(5));
         }
+
+        [Fact]
+        public void Should_return_string_representation()
+        {
+            var slotValue = new Money(100.0);
+            var moneySlot = new MoneySlot(slotValue);
+            moneySlot.Setup(5);
+
+            Assert.Equal("Slot R$ 100,00 - Quantity: 5 - Total: R$ 500,00", moneySlot.ToString());
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace atm_executor.consoleTemplate.screens
     /// </summary>
     public class OptionSelectionScreen : BaseScreen
     {
-        private List<WithdrawalOption> _options;
+        private IEnumerable<WithdrawalOption> _options;
         private string _errorMessage;
 
         public OptionSelectionScreen(string title = "") 
@@ -24,7 +24,7 @@ namespace atm_executor.consoleTemplate.screens
         /// </summary>
         public void SetOptions(IEnumerable<WithdrawalOption> options)
         {
-            _options = options.ToList();
+            _options = options;
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace atm_executor.consoleTemplate.screens
             }
 
             // Renderiza as opções
-            for (int i = 0; i < _options.Count; i++)
+            for (int i = 0; i < _options.Count(); i++)
             {
-                Console.WriteLine($"{i + 1} - {_options[i]}");
+                Console.WriteLine($"{i + 1} - {_options.ElementAt(i)}");
             }
 
             Console.WriteLine("0 - Voltar ao Menu Anterior");
@@ -93,7 +93,7 @@ namespace atm_executor.consoleTemplate.screens
                     }
 
                     // Valida se a opção está dentro do intervalo
-                    if (option > 0 && option <= _options.Count)
+                    if (option > 0 && option <= _options.Count())
                     {
                         return option - 1; // Retorna índice 0-based
                     }
@@ -114,9 +114,9 @@ namespace atm_executor.consoleTemplate.screens
         /// </summary>
         public WithdrawalOption GetSelectedWithdrawalOption(int index)
         {
-            if (index >= 0 && index < _options.Count)
+            if (index >= 0 && index < _options.Count())
             {
-                return _options[index];
+                return _options.ElementAt(index);
             }
             throw new IndexOutOfRangeException("Índice de opção inválido");
         }
@@ -126,7 +126,7 @@ namespace atm_executor.consoleTemplate.screens
         /// </summary>
         public List<WithdrawalOption> GetAllOptions()
         {
-            return _options;
+            return _options.ToList();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace atm_executor.consoleTemplate.screens
         /// </summary>
         public bool HasOptions()
         {
-            return _options.Count > 0;
+            return _options.Any();
         }
     }
 }
