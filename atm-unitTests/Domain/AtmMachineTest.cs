@@ -126,5 +126,40 @@ namespace atm_unitTests.Domain
 
             Assert.Throws<InvalidOperationException>(() => atm.Withdraw(option));
         }
+
+        [Fact]
+        public void Should_get_suported_denominations()
+        {
+            var atm = new AtmMachine();
+
+            var denominations = atm.GetSupportedDenominations().ToList();
+
+            Assert.Equal(3, denominations.Count);
+            Assert.Contains(100.0, denominations);
+            Assert.Contains(50.0, denominations);
+            Assert.Contains(20.0, denominations);
+        }
+
+        [Fact]
+        public void Should_get_money_slots()
+        {
+            var expectedQtdInSlots = 3;
+            var atm = new AtmMachine();
+            atm.LoadCash(100.0, expectedQtdInSlots);
+            atm.LoadCash(50.0, expectedQtdInSlots);
+            atm.LoadCash(20.0, expectedQtdInSlots);
+
+
+            var slots = atm.GetMoneySlots().ToList();
+
+            Assert.Equal(3, slots.Count);
+            Assert.Contains(slots, slot => slot.Value == 100.0);
+            Assert.Contains(slots, slot => slot.Value == 50.0);
+            Assert.Contains(slots, slot => slot.Value == 20.0);
+            foreach (var slot in slots)
+            {
+                Assert.Equal(expectedQtdInSlots, slot.Quantity);
+            }
+        }
     }
 }

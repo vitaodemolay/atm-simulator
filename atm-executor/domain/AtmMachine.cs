@@ -1,3 +1,5 @@
+using atm_executor.domain.contracts;
+
 namespace atm_executor.domain
 {
     public class AtmMachine
@@ -30,6 +32,7 @@ namespace atm_executor.domain
         }
 
         public IEnumerable<double> GetSupportedDenominations() => supportedDenominations;
+        public IEnumerable<IMoneySlotView> GetMoneySlots() => moneySlots.Values;
 
         public void LoadCash(Money slotValue, int quantity)
         {

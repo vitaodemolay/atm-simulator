@@ -1,6 +1,8 @@
+using atm_executor.domain.contracts;
+
 namespace atm_executor.domain
 {
-    public class MoneySlot
+    public class MoneySlot : IMoneySlotView
     {
         private int _quantity;
 
