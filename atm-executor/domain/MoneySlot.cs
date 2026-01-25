@@ -17,7 +17,7 @@ namespace atm_executor.domain
 
         public void Dispense(int quantity)
         {
-            if (quantity > _quantity)
+            if (!CanDispense(quantity))
             {
                 throw new InvalidOperationException("Not enough money in the slot to dispense the requested quantity.");
             }

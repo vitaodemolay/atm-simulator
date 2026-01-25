@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  atm-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atm-simulator
+    stdin_open: true
+    tty: true

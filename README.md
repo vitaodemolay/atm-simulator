@@ -75,3 +75,12 @@ Ao concluir o exercício, o aluno deverá ter:
 - Relatório de estoque atual.  
 - Registro de histórico de saques.  
 - Tratamento de exceções (ex: valor não múltiplo de 10 ou 20).  
+
+
+---
+
+ ## 📖 Documentação Completa da Solução
+ 
+ - [🎯 Link](SOLUTION_DOCUMENTATION.md)
+
+---
