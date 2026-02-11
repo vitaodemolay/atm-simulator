@@ -32,7 +32,7 @@ domain/
 
 ## 3. Separação de Responsabilidades
 
-A solução implementa a **Single Responsibility Principle (SRP)** com cada classe tendo um propósito bem definido:
+A solução implementa a **[Single Responsibility Principle (SRP)](https://en.wikipedia.org/wiki/Single-responsibility_principle)** com cada classe tendo um propósito bem definido:
 
 ### **Money** - Value Object Monetário
 **Responsabilidade:** Encapsular e abstrair o conceito de valor monetário, eliminando a obsessão por primitivos.
@@ -54,7 +54,7 @@ public class Money
 
 ---
 
-### **MoneySlot** - Agregado de Armazenamento
+### **MoneySlot** - Entidade de Armazenamento
 **Responsabilidade:** Gerenciar o armazenamento de notas de uma denominação específica.
 
 ```csharp
@@ -104,9 +104,16 @@ public class WithdrawalOption
 
 ---
 
+### **Referências** 
+- [Solid principles](https://en.wikipedia.org/wiki/SOLID)
+- [Value Objects - by Martin Fowler](https://martinfowler.com/bliki/ValueObject.html) 
+- [Domain Driven Designer - Evans Classification](https://martinfowler.com/bliki/EvansClassification.html)
+
+---
+
 ## 4. Padrões e Boas Práticas
 
-### 4.1 **Value Object Pattern** (Money e WithdrawalOption)
+### 4.1 **[Value Object Pattern](https://martinfowler.com/bliki/ValueObject.html)** (Money e WithdrawalOption)
 
 ✅ **Características implementadas:**
 - Imutabilidade total após construção
@@ -142,7 +149,7 @@ public void Dispense(int quantity)
 
 ---
 
-### 4.3 **Interface de Visão (IMoneySlotView)**
+### 4.3 **Interface de Visão (IMoneySlotView) - [Interface Segregation Principle (ISP)](https://en.wikipedia.org/wiki/Interface_segregation_principle)**
 
 ✅ **Padrão: Interface segregada somente leitura**
 
@@ -161,7 +168,7 @@ public IEnumerable<IMoneySlotView> GetMoneySlots() => moneySlots.Values;
 
 ---
 
-### 4.4 **Algoritmo de Backtracking com Restrições**
+### 4.4 **[Algoritmo de Backtracking](https://en.wikipedia.org/wiki/Backtracking) com Restrições**
 
 ✅ **Estratégia inteligente de busca:**
 
@@ -207,7 +214,7 @@ public AtmMachine()
 
 ---
 
-### 4.6 **Fail-Fast com Exceções Específicas**
+### 4.6 **[Fail-Fast](https://en.wikipedia.org/wiki/Fail-fast_system) com Exceções Específicas**
 
 ✅ **Exemplos no código:**
 
@@ -281,7 +288,7 @@ Valida a orquestração completa:
 
 ---
 
-## 6. Princípios SOLID Aplicados
+## 6. Princípios [SOLID](https://en.wikipedia.org/wiki/SOLID) Aplicados
 
 | Princípio | Aplicação |
 |-----------|-----------|
